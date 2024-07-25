@@ -1,0 +1,82 @@
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+:root {
+	text-wrap: pretty;
+	scroll-behavior: smooth;
+	// scrollbar-color: var(--primary-color) transparent;
+	accent-color: var(--primary-color);
+	font-size: 16px;
+	overflow-wrap: break-word;
+
+	// Smaller font size on mobile
+	// @media only screen and (max-width: 480px) {
+	//     font-size: 14px;
+	// }
+}
+
+body {
+	display: grid; // Put footer at the bottom for short pages, such as the 404
+	grid-template-rows: auto minmax(auto, 1fr) auto; // Header, stuff, footer
+	margin: 0;
+	background: var(--bg-color), var(--primary-color);
+	min-height: 100vh;
+	color: var(--fg-color);
+	line-height: 1.6;
+	font-family: var(--font-system-ui);
+}
+
+// Style text selection to use primary color
+::selection {
+	background-color: var(--primary-color);
+	color: var(--fg-color);
+}
+
+// Make focused anchor not get covered by nav,
+// and flash it with primary color when jumping to it
+:target:not(#main) {
+	transition: all var(--transition-longer), scroll-margin-top 0s;
+	scroll-margin-top: 20vh;
+	color: var(--primary-color);
+	text-shadow: var(--primary-color-alpha) 0 0 0.25rem, var(--primary-color) 0 0 0.75rem;
+}
+
+// Custom focus indicator
+:focus-visible {
+	animation: focus-in var(--transition);
+	outline: 0.125rem solid var(--primary-color);
+	outline-offset: 0.125rem;
+}
+
+// Fallback for older browsers
+@supports not selector(:focus-visible) {
+	:focus {
+		animation: focus-in var(--transition);
+		outline: 0.125rem solid var(--primary-color);
+		outline-offset: 0.125rem;
+	}
+}
+
+@keyframes focus-in {
+	from {
+		outline: 0.5rem solid transparent;
+		outline-offset: 0.25rem;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	width: min(var(--container-width), 90%);
+}
+
+@media (prefers-reduced-motion) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}

@@ -1,0 +1,133 @@
+title = "Asterisk Research"
+base_url = "https://research.asterisk.so"
+description = "Asterisk AI+Security Research Blog."
+
+compile_sass = true
+minify_html = true
+generate_feeds = true
+# Only the first file will be used in the navbar feed button,
+# other feeds will still be available in page's head.
+feed_filenames = ["rss.xml", "atom.xml"]
+build_search_index = true
+author = "Asterisk Research Team"
+
+# Based on https://github.com/welpo/tabi
+#
+# To translate the entire theme, there must be a file with the same ISO 639-1 or BCP 47
+# language code in the `i18n` directory of your site or the Duckquill theme.
+# For example, "i18n/fr.toml" for French or "i18n/zh-Hans.toml" for Simplified Chinese.
+# Otherwise the theme will be in English.
+#
+# ISO 639-1: https://localizely.com/iso-639-1-list/
+# BCP 47: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+default_language = "en"
+
+taxonomies = [{ name = "tags", feed = true }]
+
+[markdown]
+highlight_code = true
+highlight_theme = "css"
+highlight_themes_css = [
+  { theme = "solarized-dark", filename = "syntax-theme-dark.css" },
+  { theme = "solarized-light", filename = "syntax-theme-light.css" },
+]
+smart_punctuation = true
+
+[search]
+index_format = "elasticlunr_json"
+
+[extra]
+# Sets theme and browser theme color.
+# See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+primary_color = "#ff7800"
+# Same as primary_color, but with 20% opacity
+primary_color_alpha = "rgba(255, 120, 0, 0.2)"
+# Ditto but for the dark mode.
+# If not set regular variant will be used.
+primary_color_dark = "#ffa348"
+primary_color_dark_alpha = "rgba(255, 163, 72, 0.2)"
+# Use emoji as a favicon.
+# Only one emoji is being rendered, everything else is truncated.
+# emoji_favicon = "🦆🪶"
+# URL to website's issue tracker
+issues_url = "https://codeberg.org/daudix/duckquill/issues"
+# URL to website's source code
+source_url = "https://codeberg.org/daudix/duckquill"
+# Additional CSS stylesheets; expects them to be in the "./static/" directory.
+# If you are using Sass it will be generated there automatically.
+# stylesheets = [
+#   "YOUR_STYLE.css",
+#   "ALSO_YOUR_STYLE.css"
+# ]
+# Additional JavaScript scripts; expects them to be in the "./static/" directory.
+# scripts = [
+#   "YOUR_SCRIPT.js",
+#   "ALSO_YOUR_SCRIPT.js"
+# ]
+# Whether to show "copy code" button on all code blocks
+# that have the language set.
+# See https://www.getzola.org/documentation/content/syntax-highlighting/
+show_copy_button = true
+# Whether to show estimated read time in posts.
+# Calculated using the simple math: number of words ÷ words per minute.
+show_read_time = true
+# words_per_minute = "200"
+
+[extra.nav]
+# Whether to show Atom/RSS feed button in the nav
+show_feed = true
+# Links used in the nav.
+# For local files use same link format as in Markdown,
+# i.e "@/blog/_index.md".
+# See https://www.getzola.org/documentation/content/linking/#internal-links
+links = [
+  { url = "@/posts/_index.md", name = "Posts" },
+  { url = "https://asterisk.so", name = "Website" },
+]
+
+[extra.footer]
+# Links used in the footer.
+# Same as the nav ones.
+links = [
+  { url = "@/posts/_index.md", name = "Posts" },
+  { url = "https://asterisk.so", name = "Website" },
+]
+# Social links in the footer.
+# Any URL-encoded SVG can be used as an icon.
+# https://simpleicons.org is recommended source of SVG icons.
+# For URL encoding https://yoksel.github.io/url-encoder/ can be used.
+socials = [
+  { url = "https://github.com/getAsterisk", name = "GitHub", icon = "%3Csvg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EGitHub%3C/title%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E" },
+  { url = "https://x.com/getAsterisk", name = "Twitter", icon = "%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='300' height='300.251' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M178.57 127.15 290.27 0h-26.46l-97.03 110.38L89.34 0H0l117.13 166.93L0 300.25h26.46l102.4-116.59 81.8 116.59h89.34M36.01 19.54H76.66l187.13 262.13h-40.66'/%3E%3C/svg%3E" },
+]
+# Whether to show "© Title, YEAR"
+show_copyright = false
+# Whether to show "Powered by Zola and Duckquill"
+show_powered_by = false
+# Whether to show link to website source
+show_source = false
+# Custom copyright text
+# copyright = "© *Aperture* **Science** ~~Innovators~~, `1972`"
+
+# Based on https://carlschwan.eu/2020/12/29/adding-comments-to-your-static-blog-with-mastodon/
+#
+# Mastodon-powered commenting.
+# Values can be overridden in front-matter, e.g.
+# for multi-author blogs or guest posts.
+#
+# These variables are also used for Mastodon verification,
+# the needed rel="me" link is set in the head based on these.
+# [extra.comments]
+# # Your Mastodon API host; instance that you have an account on.
+# host = "vmst.io"
+# # Your Mastodon username; used to determine who the original poster is.
+# user = "daudix"
+# # Whether to show the QR code to Mastodon post
+# show_qr = true
+
+# GoatCounter analytics; enabled only if present in config.
+# [extra.goatcounter]
+# Your GoatCounter server; goatcounter.com is used by default.
+# host = "YOUR_SERVER"
+# Your GoatCounter username
+# user = "duckquill"

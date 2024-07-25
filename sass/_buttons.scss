@@ -1,0 +1,44 @@
+.dialog-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
+	margin-top: 4rem;
+}
+
+.inline-button {
+	-webkit-appearance: none;
+	appearance: none;
+	transition: var(--transition);
+	cursor: pointer;
+	box-shadow: var(--edge-highlight);
+	border: none;
+	border-radius: var(--rounded-corner);
+	background-color: var(--fg-muted-1);
+	padding: 0.75rem 1rem;
+	color: var(--fg-color);
+	font-weight: bold;
+	font-size: 0.875rem;
+	line-height: 1;
+	text-decoration: none;
+
+	&:hover {
+		background-color: var(--fg-muted-2);
+		text-decoration: none;
+	}
+
+	&:active {
+		transform: scale(var(--active));
+	}
+
+	&.colored {
+		box-shadow: none;
+		background-color: transparent;
+		color: var(--primary-color);
+
+		&:hover {
+			box-shadow: var(--edge-highlight);
+			background-color: var(--primary-color-alpha);
+		}
+	}
+}

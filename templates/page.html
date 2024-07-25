@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- include "partials/statements.html" -%}
+{{ page.content | safe }}
+{% endblock content %}

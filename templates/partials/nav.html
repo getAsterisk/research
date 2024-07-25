@@ -1,0 +1,69 @@
+<header id="site-nav">
+	<nav>
+		<a href="#main" id="main-content" tabindex="0">
+			{{ macros_translate::translate(key="skip_to_content", default="Skip to main content", language_strings=language_strings) }}
+		</a>
+		<ul>
+			<li id="home">
+				<a href="{{ get_url(path='/', lang=lang) }}"
+					{%- if current_url | default(value="/") | trim_end_matches(pat="/") | safe == get_url(path="/", lang=lang) | trim_end_matches(pat='/') | safe -%}
+						class="active"
+					{%- endif -%}>
+					<!-- {{- config.title -}} -->
+					<img src="/gradient-long.png" alt="Asterisk Research" width="100" style="border: none; box-shadow: none; background: none; margin: 0 !important;">
+				</a>
+			</li>
+			{%- for link in config.extra.nav.links %}
+				{%- if link.url is matching('https?://') %}
+					<li>
+						<a href="{{ link.url }}"
+							{%- if current_url | default(value='/') | trim_end_matches(pat='/') | safe == link.url | trim_end_matches(pat='/') | safe -%}
+								class="active"
+							{%- endif -%}>
+							{{- macros_translate::translate(key=link.name, default=link.name, language_strings=language_strings) -}}
+						</a>
+					</li>
+				{%- else %}
+					<li>
+						<a href="{{ get_url(path=link.url, lang=lang)}}"
+							{%- if current_url | default(value='/') | trim_end_matches(pat='/') | safe == get_url(path=link.url, lang=lang) | trim_end_matches(pat='/') | safe -%}
+								class="active"
+							{%- endif -%}>
+							{{- macros_translate::translate(key=link.name, default=link.name, language_strings=language_strings) -}}
+						</a>
+					</li>
+				{%- endif %}
+			{%- endfor -%}
+			{%- if config.build_search_index %}
+				<li id="search">
+					<button onclick="toggleSearch()">
+						<i class="icon"></i>
+						<span class="hidden">
+							{{- macros_translate::translate(key="search", default="Search", language_strings=language_strings) -}}
+						</span>
+					</button>
+				</li>
+			{%- endif %}
+			{%- if config.languages | length > 0 %}
+				{%- include "partials/language_switcher.html" %}
+			{%- endif -%}
+			{%- if config.generate_feeds and config.extra.nav.show_feed %}
+				<li id="feed">
+					<a href="{{ get_url(path=config.feed_filenames[0]) }}">
+						<i class="icon"></i>
+						<span class="hidden">
+							{{- macros_translate::translate(key="feed", default="Feed", language_strings=language_strings) -}}
+						</span>
+					</a>
+				</li>
+			{%- endif %}
+		</ul>
+	</nav>
+	<div id="search-container">
+		<label for="search-bar" class="hidden">
+			{{- macros_translate::translate(key="search", default="Search", language_strings=language_strings) -}}
+		</label>
+		<input id="search-bar" placeholder="{{ macros_translate::translate(key='search_for', default='Search for', language_strings=language_strings) }}…" autocomplete="off" type="search" disabled>
+		<div id="search-results"></div>
+	</div>
+</header>
